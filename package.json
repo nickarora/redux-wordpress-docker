@@ -1,0 +1,11 @@
+{
+  "name": "redux-docker-spike",
+  "version": "0.0.1",
+  "description": "Architecture using React, Redux, Node, Wordpress API, and Docker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Arora",
+  "license": "MIT"
+}
