@@ -1,7 +1,26 @@
 version: '2'
 services:
+  db:
+    image: mysql:5.7
+    container_name: redux_docker_db
+    env_file: .env
+    restart: always
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    container_name: redux_docker_wordpress
+    env_file: .env
+    links:
+      - db
+    ports:
+      - "5000:80"
+    restart: always
   backend:
     image: node:6.2
+    container_name: redux_docker_backend
     env_file: .env
     working_dir: /backend
     command: npm run dev
@@ -9,4 +28,3 @@ services:
       - ./backend:/backend
     ports:
       - "8000:8000"
-    container_name: redux_docker_backend
