@@ -2,6 +2,7 @@ version: '2'
 services:
   backend:
     image: node:6.2
+    env_file: .env
     working_dir: /backend
     command: npm run dev
     volumes:
@@ -9,5 +10,3 @@ services:
     ports:
       - "8000:8000"
     container_name: redux_docker_backend
-    environment:
-      NODE_ENV: ${NODE_ENV}
