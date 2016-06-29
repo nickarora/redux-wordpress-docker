@@ -8,5 +8,5 @@ dcdev build
 echo "installing backend deps"
 dcdev run --rm backend npm install
 
-echo "starting"
+echo "starting up containers"
 dcdev up -d
