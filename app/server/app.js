@@ -1,10 +1,13 @@
 import Express from 'express'
 import bodyParser from 'body-parser'
+import routes from './routes'
 
 const errorHandler = (error, req, res, next) => {
   if (error.status && error.message) {
     return res.status(error.status).send(error.message).end()
   }
+
+  console.log(error.message)
 
   return res.status(500).send({
     message: 'Internal Server Error',
@@ -17,9 +20,7 @@ const app = new Express()
 app.use(bodyParser.json({ type: ['application/json'] }))
 
 // Routes
-app.get("/", (req, res) => {
-  res.send("Hello World!")
-})
+app.use("/", routes)
 
 app.use(errorHandler)
 

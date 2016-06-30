@@ -1,0 +1,1 @@
+export const wordpress_api = path => `http://wordpress/wp-json/wp/v2/${path}`
