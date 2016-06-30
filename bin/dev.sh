@@ -5,8 +5,8 @@ source bin/env.sh
 echo "building"
 dcdev build
 
-echo "installing backend deps"
-dcdev run --rm backend npm install
+echo "installing node application deps"
+dcdev run --rm app npm install
 
 echo "starting up containers"
 dcdev up -d

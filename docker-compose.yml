@@ -20,13 +20,13 @@ services:
     ports:
       - "5000:80"
     restart: always
-  backend:
+  app:
     image: node:6.2
-    container_name: redux_docker_backend
+    container_name: redux_docker_app
     env_file: .env
-    working_dir: /backend
+    working_dir: /app
     command: npm run dev
     volumes:
-      - ./backend:/backend
+      - ./app:/app
     ports:
       - "8000:8000"
