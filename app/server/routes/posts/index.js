@@ -1,13 +1,12 @@
 import 'isomorphic-fetch'
-import { wordpress_api } from '../../config'
+import { wordpressApi } from '../../config'
+import { wordpressToken } from '../../util'
 import { Router } from 'express'
 
 const router = new Router()
 
 const checkStatus = response => {
-  console.log('sup')
   if (!response.ok) {
-    console.log('sup')
     const error = new Error(response.statusText)
     error.status = response.status
     throw error
@@ -16,8 +15,28 @@ const checkStatus = response => {
   return response.json()
 }
 
+const postReqConfig = (bodyObj) => ({
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Basic ${wordpressToken}`,
+    },
+    body: JSON.stringify(bodyObj),
+  })
+
 router.get('/', (req, res, next) => {
-  fetch(wordpress_api('posts'))
+  fetch(wordpressApi('/posts'))
+  .then(checkStatus)
+  .then(response => res.status(200).send(response))
+  .catch(next)
+})
+
+router.get('/test', (req, res, next) => {
+  const update = {
+    title: 'Everything works.'
+  }
+
+  fetch(wordpressApi('/posts/1'), postReqConfig(update))
   .then(checkStatus)
   .then(response => res.status(200).send(response))
   .catch(next)

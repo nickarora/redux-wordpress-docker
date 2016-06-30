@@ -37,8 +37,5 @@ If you haven't already, login to wordpress using your admin username and passwor
 6. run `$ ./bin/restart_app.sh` to propagate your key to the node application
 
 ####  Step 4: Test the API _(Optional)_
-1. Generate an access token by running `echo -n "admin_user:<API_KEY>" | base64`. Replace the API_KEY with the key you generated above. Keep this string handy.
-2. In Postman, create `POST` request to `http://redux.docker.dev:5000/wp-json/wp/v2/posts/1`
-  * Set the body to: `{ "title": "My New Title" }`
-  * Set a header key of `Authorization` to `Basic <Access Token>`.  Replace Access token with the token you generated in step 1.
-3. Hit send.  If everything is set up correctly, you should have updated the title of the default Hello World post.
+1. visit [redux.docker.dev:8000/test](http://redux.docker.dev:8000/test)
+2. The JSON response should reflect that the 'title' key has been assigned the phrase 'Everything works.'

@@ -1,1 +1,1 @@
-export const wordpress_api = path => `http://wordpress/wp-json/wp/v2/${path}`
+export { default as wordpressApi } from './wordpress_api'
