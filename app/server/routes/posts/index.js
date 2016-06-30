@@ -16,13 +16,13 @@ const checkStatus = response => {
 }
 
 const postReqConfig = (bodyObj) => ({
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Basic ${wordpressToken}`,
-    },
-    body: JSON.stringify(bodyObj),
-  })
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Basic ${wordpressToken}`, // eslint-disable-line quote-props
+  },
+  body: JSON.stringify(bodyObj),
+})
 
 router.get('/', (req, res, next) => {
   fetch(wordpressApi('/posts'))
@@ -33,7 +33,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/test', (req, res, next) => {
   const update = {
-    title: 'Everything works.'
+    title: 'Everything works.',
   }
 
   fetch(wordpressApi('/posts/1'), postReqConfig(update))

@@ -1,3 +1,4 @@
+/* eslint-disable no-console, no-unused-vars */
 import Express from 'express'
 import bodyParser from 'body-parser'
 import routes from './routes'
@@ -20,7 +21,7 @@ const app = new Express()
 app.use(bodyParser.json({ type: ['application/json'] }))
 
 // Routes
-app.use("/", routes)
+app.use('/', routes)
 
 app.use(errorHandler)
 
