@@ -25,7 +25,7 @@ services:
     container_name: redux_docker_app
     env_file: .env
     working_dir: /app
-    command: npm run dev
+    command: npm run dev-start
     volumes:
       - ./app:/app
     ports:
