@@ -22,6 +22,7 @@ You should now be able to visit:
 
 #### Step 2: Enable pretty permalinks
 Login to wordpress using your admin username and password.
+
 1. Click on the `Settings` tab
 2. Select `Permalinks`
 3. Change Common Settings to `Post name`
