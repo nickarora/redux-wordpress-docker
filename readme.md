@@ -36,6 +36,21 @@ If you haven't already, login to wordpress using your admin username and passwor
 5. Replace the `API_KEY` field in your `.env` file with the generated password
 6. run `$ ./bin/restart_app.sh` to propagate your key to the node application
 
-####  Step 4: Test the API _(Optional)_
-1. visit [redux.docker.dev:8000/test](http://redux.docker.dev:8000/test)
-2. The JSON response should reflect that the 'title' key has been assigned the phrase 'Everything works.'
+####  Step 4: Working with Node/Redux
+1. Visit [redux.docker.dev:8080](http://redux.docker.dev:8080/) to see the site in action.
+2. Changes to the client-side code should immediately appear thanks to React-Hot-Loader 3 (note: this is still in beta and a reload may occasionally be necessary)
+3. By default Redux DevTools will be visible, allowing you to inspect the Redux state.  To hide the DevTools press `Ctrl + h`.  To move DevTools to another edge of the screen press `Ctrl + q`
+4. The Node server is being served using Nodemon.  This means changes to the server code will cause the server to restart on the fly.
+
+### Bonus 1: Logging
+To view container logs use `docker-compose logs <container-name>`.  The container-name is the name specified in `docker-compose.yml`
+
+### Bonus 2: Access a container's shell
+If the container is currently stopped, you can enter the container's bash shell by running:
+```
+docker-compose run <container-name> bash
+```
+If the container is currently running, use the following command instead:
+```
+docker-compose exec <container-name> bash
+```

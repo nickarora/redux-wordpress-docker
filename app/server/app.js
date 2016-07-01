@@ -1,6 +1,8 @@
 /* eslint-disable no-console, no-unused-vars */
 import Express from 'express'
 import bodyParser from 'body-parser'
+import path from 'path'
+import cors from 'cors'
 import routes from './routes'
 
 const errorHandler = (error, req, res, next) => {
@@ -18,11 +20,12 @@ const errorHandler = (error, req, res, next) => {
 const app = new Express()
 
 // Middleware
+app.use(cors())
 app.use(bodyParser.json({ type: ['application/json'] }))
 
 // Routes
 app.use('/', routes)
-
+app.use('/', Express.static(path.resolve(__dirname, '../dist')))
 app.use(errorHandler)
 
 export default app
