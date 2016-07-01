@@ -29,6 +29,7 @@ Login to wordpress using your admin username and password.
 
 #### Step 3: Create an application password
 If you haven't already, login to wordpress using your admin username and password.
+
 1. Click on `Users`
 2. Select `Your Profile`
 3. At the bottom of hte page, enter an app name: `redux-docker`
