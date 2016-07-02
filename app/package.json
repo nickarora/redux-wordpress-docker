@@ -5,7 +5,9 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev-start": "nodemon server/index.js | webpack-dev-server --host=0.0.0.0",
+    "dev-server": "nodemon server/index.js",
+    "dev-client": "webpack-dev-server --host=0.0.0.0",
+    "dev-start": "npm run dev-server | npm run dev-client",
     "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

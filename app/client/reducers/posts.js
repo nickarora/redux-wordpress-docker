@@ -1,21 +1,14 @@
 /* eslint-disable max-len */
-const initialState = [
-  {
-    id: 1,
-    title: 'Post1',
-    excerpt: 'Truffaut twee wolf, try-hard humblebrag fixie actually selfies portland hammock...',
-    content: 'Truffaut twee wolf, try-hard humblebrag fixie actually selfies portland hammock polaroid deep v man bun cardigan godard. Pinterest kinfolk ethical kale chips bespoke offal flexitarian, typewriter mustache organic thundercats distillery humblebrag. Mlkshk meditation migas, mustache vegan godard narwhal street art poutine.',
-  },
-  {
-    id: 2,
-    title: 'Post2',
-    excerpt: 'Scenester pabst bicycle rights, shoreditch banh mi readymade offal listicle...',
-    content: 'Scenester pabst bicycle rights, shoreditch banh mi readymade offal listicle XOXO pop-up keffiyeh fixie stumptown venmo. Blog heirloom venmo, seitan meditation listicle direct trade. Craft beer synth offal, bushwick you probably haven\'t heard of them gentrify YOLO trust fund yr.',
-  },
-]
+import { POSTS_REQUEST, POSTS_SUCCESS, POSTS_FAILURE } from 'constants'
+
+const initialState = []
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case POSTS_SUCCESS:
+      return action.payload
+    case POSTS_FAILURE:
+    case POSTS_REQUEST:
     default:
       return state
   }

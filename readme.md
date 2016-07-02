@@ -9,7 +9,9 @@ Before you begin, ensure you have [Docker for OSX](https://docs.docker.com/engin
 
 2. Create a file called `.env` in the root directory and populate it with the necessary environment variables.  You can take a look at `.env.sample`to see what you need.
 
-3. Setup the necessary docker containers by firing the following command from the root directory.
+3. Make sure you set `HOST_MACHINE` in `.env` to your machine's IP
+
+4. Setup the necessary docker containers by firing the following command from the root directory.
    ```sh
    $ ./bin/dev.sh
    ```

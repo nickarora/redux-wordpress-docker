@@ -85,6 +85,7 @@ const development = {
       'process.env': {
         NODE_ENV: JSON.stringify(TARGET),
         PORT: JSON.stringify(DEV_SERVER_PORT),
+        HOST: JSON.stringify(process.env.HOST_MACHINE),
       },
     }),
   ],

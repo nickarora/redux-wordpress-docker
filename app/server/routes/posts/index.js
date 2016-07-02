@@ -24,9 +24,21 @@ const postReqConfig = (bodyObj) => ({
   body: JSON.stringify(bodyObj),
 })
 
+const strip = content =>
+  content.rendered.replace(/<\/?p>|^\s+|\s+$/g, '')
+
+const extractRelevantPostData = posts =>
+  posts.map(post => ({
+    id: post.id,
+    title: strip(post.title),
+    excerpt: strip(post.excerpt),
+    content: strip(post.content),
+  }))
+
 router.get('/', (req, res, next) => {
   fetch(wordpressApi('/posts'))
   .then(checkStatus)
+  .then(extractRelevantPostData)
   .then(response => res.status(200).send(response))
   .catch(next)
 })
