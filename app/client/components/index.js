@@ -1,2 +1,2 @@
-export { default as Root } from './root'
-export { default as Home } from './home'
+export { default as PostFeed } from './post_feed'
+export { default as Post } from './post'
