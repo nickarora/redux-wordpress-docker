@@ -1,11 +1,9 @@
-import { createStore, compose } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { DevTools } from 'utils'
+import { apiMiddleware } from 'redux-api-middleware'
 import rootReducer from 'reducers'
 
-// import api from 'middleware/api'
-// applyMiddleware(api)
-
-const enhancer = compose(DevTools.instrument())
+const enhancer = compose(applyMiddleware(apiMiddleware), DevTools.instrument())
 
 const configureStore = (initialState) => createStore(rootReducer, initialState, enhancer)
 
