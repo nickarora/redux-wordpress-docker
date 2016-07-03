@@ -5,6 +5,13 @@ import { Router } from 'express'
 
 const router = new Router()
 
+const authReq = {
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Basic ${wordpressToken}`, // eslint-disable-line quote-props
+  },
+}
+
 const checkStatus = response => {
   if (!response.ok) {
     const error = new Error(response.statusText)
@@ -16,12 +23,14 @@ const checkStatus = response => {
 }
 
 const postReqConfig = (bodyObj) => ({
+  ...authReq,
   method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Basic ${wordpressToken}`, // eslint-disable-line quote-props
-  },
   body: JSON.stringify(bodyObj),
+})
+
+const delReqConfig = () => ({
+  ...authReq,
+  method: 'DELETE',
 })
 
 const strip = content =>
@@ -35,10 +44,33 @@ const extractRelevantPostData = posts =>
     content: strip(post.content),
   }))
 
+const extractNewPostData = post => ({
+  id: post.id,
+  title: post.title.raw,
+  excerpt: strip(post.excerpt),
+  content: post.content.raw,
+})
+
 router.get('/', (req, res, next) => {
   fetch(wordpressApi('/posts'))
   .then(checkStatus)
   .then(extractRelevantPostData)
+  .then(response => res.status(200).send(response))
+  .catch(next)
+})
+
+router.post('/', (req, res, next) => {
+  fetch(wordpressApi('/posts'), postReqConfig(req.body))
+  .then(checkStatus)
+  .then(extractNewPostData)
+  .then(response => res.status(200).send(response))
+  .catch(next)
+})
+
+router.delete('/:id', (req, res, next) => {
+  const postId = req.params.id
+  fetch(wordpressApi(`/posts/${postId}`), delReqConfig())
+  .then(checkStatus)
   .then(response => res.status(200).send(response))
   .catch(next)
 })
