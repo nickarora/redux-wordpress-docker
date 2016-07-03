@@ -1,5 +1,8 @@
 /* eslint-disable max-len */
-import { POSTS_REQUEST, POSTS_SUCCESS, POSTS_FAILURE } from 'constants'
+import {
+  POSTS_SUCCESS,
+  CREATE_POST_SUCCESS,
+} from 'constants'
 
 const initialState = []
 
@@ -7,8 +10,8 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case POSTS_SUCCESS:
       return action.payload
-    case POSTS_FAILURE:
-    case POSTS_REQUEST:
+    case CREATE_POST_SUCCESS:
+      return [action.payload].concat(state)
     default:
       return state
   }
