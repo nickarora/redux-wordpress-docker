@@ -43,9 +43,8 @@ If you haven't already, login to wordpress using your admin username and passwor
 ####  Step 4: Working with Node/Redux
 1. Visit [redux.docker.dev:8080](http://redux.docker.dev:8080/) to see the site in action.
 2. Changes to the client-side code will automatically update in the browser thanks to React-Hot-Loader 3 (note: this is still in beta and a reload may occasionally be necessary)
-3. Changes to the server-side will cause the node server (port 8000) to restart.  Because Docker for mac is slow, this can take a little time. Be patient.
+3. The Node server is being served using Nodemon. This means changes to the server-side code will cause the node server (port 8000) to restart.  Because Docker for mac is slow, this can take a little time. Be patient.
 4. By default Redux DevTools will be visible, allowing you to inspect the Redux state.  To hide the DevTools press `Ctrl + h`.  To move DevTools to another edge of the screen press `Ctrl + q`
-5. The Node server is being served using Nodemon.  This means changes to the server code will cause the server to restart on the fly.
 
 ### Bonus 1: Logging
 To view container logs use `docker-compose logs <container-name>`.  The container-name is the name specified in `docker-compose.yml`
