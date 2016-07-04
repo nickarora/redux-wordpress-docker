@@ -51,6 +51,8 @@ const extractNewPostData = post => ({
   content: post.content.raw,
 })
 
+const extractId = post => ({ id: post.id })
+
 router.get('/', (req, res, next) => {
   fetch(wordpressApi('/posts'))
   .then(checkStatus)
@@ -71,6 +73,7 @@ router.delete('/:id', (req, res, next) => {
   const postId = req.params.id
   fetch(wordpressApi(`/posts/${postId}`), delReqConfig())
   .then(checkStatus)
+  .then(extractId)
   .then(response => res.status(200).send(response))
   .catch(next)
 })

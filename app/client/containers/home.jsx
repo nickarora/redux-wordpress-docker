@@ -32,11 +32,11 @@ class Home extends Component {
   }
 
   render() {
-    const { posts } = this.props
+    const { posts, actions } = this.props
 
     return (
       <div>
-        <PostFeed posts={posts} />
+        <PostFeed posts={posts} deletePost={actions.deletePost} />
         <PostForm createPost={(e) => this.createPost(e)} />
       </div>
     )

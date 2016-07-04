@@ -6,6 +6,9 @@ import {
   CREATE_POST_REQUEST,
   CREATE_POST_SUCCESS,
   CREATE_POST_FAILURE,
+  DELETE_POST_REQUEST,
+  DELETE_POST_SUCCESS,
+  DELETE_POST_FAILURE,
 } from 'constants'
 
 import { nodeApi } from 'config'
@@ -27,5 +30,13 @@ export const createPost = (post) => ({
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(post),
     types: [CREATE_POST_REQUEST, CREATE_POST_SUCCESS, CREATE_POST_FAILURE],
+  },
+})
+
+export const deletePost = (post) => ({
+  [CALL_API]: {
+    endpoint: `${endpoint}/posts/${post.id}`,
+    method: 'DELETE',
+    types: [DELETE_POST_REQUEST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE],
   },
 })
