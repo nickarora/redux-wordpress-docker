@@ -7,7 +7,7 @@ Before you begin, ensure you have [Docker for OSX](https://docs.docker.com/engin
    127.0.0.1 redux.docker.dev
    ```
 
-2. Create a file called `.env` in the root directory and populate it with the necessary environment variables.  You can take a look at `.env.sample`to see what you need.
+2. Rename `.env.sample` to `.env`
 
 3. Make sure you set `HOST_MACHINE` in `.env` to your machine's IP
 
