@@ -27,7 +27,6 @@ You should now be able to visit:
 * [redux.docker.dev:5000/](http://redux.docker.dev:5000): wordpress site
 * [redux.docker.dev:5000/wp-login.php](http://redux.docker.dev:5000/wp-login.php): wordpress admin login
   * login credentials are defined in your `.env` file
-* [redux.docker.dev:8000](http://redux.docker.dev:8000): nodejs application
 
 #### Step 2: Enable pretty permalinks
 Login to wordpress using your admin username and password.
@@ -46,6 +45,13 @@ If you haven't already, login to wordpress using your admin username and passwor
 4. Click Add New
 5. Replace the `API_KEY` field in your `.env` file with the generated password
 6. run `$ ./bin/restart_app.sh` to propagate your key to the node application
+
+You should now be able to visit:
+* [redux.docker.dev:8080](http://redux.docker.dev:8080): redux application
+
+You can also test that the Node API is working
+* [redux.docker.dev:8000/posts](http://redux.docker.dev:8000/posts): posts endpoint
+
 
 ####  Step 4: Working with Node/Redux
 1. Visit [redux.docker.dev:8080](http://redux.docker.dev:8080/) to see the site in action.
