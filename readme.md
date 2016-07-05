@@ -20,13 +20,18 @@ $ npm i
 
 4. Setup the necessary docker containers by firing the following command from the root directory.
    ```sh
-   $ ./bin/dev.sh
+   $ ./bin/dev-server.sh
    ```
 
 You should now be able to visit:
 * [redux.docker.dev:5000/](http://redux.docker.dev:5000): wordpress site
 * [redux.docker.dev:5000/wp-login.php](http://redux.docker.dev:5000/wp-login.php): wordpress admin login
   * login credentials are defined in your `.env` file
+
+You can the wordpress instance logs by running
+```
+$ docker-compose logs wordpress
+```
 
 #### Step 2: Enable pretty permalinks
 Login to wordpress using your admin username and password.
@@ -44,25 +49,41 @@ If you haven't already, login to wordpress using your admin username and passwor
 3. At the bottom of hte page, enter an app name: `redux-docker`
 4. Click Add New
 5. Replace the `API_KEY` field in your `.env` file with the generated password
-6. run `$ ./bin/restart_app.sh` to propagate your key to the node application
+6. run `$ ./bin/restart_app.sh` to propagate your key to the node backend
 
-You should now be able to visit:
-* [redux.docker.dev:8080](http://redux.docker.dev:8080): redux application
+You can verify that the backend is set up correctly by visiting [redux.docker.dev:8000/posts](http://redux.docker.dev:8000/posts).  If everything is fine, you should see a JSON response.
 
-You can also test that the Node API is working
-* [redux.docker.dev:8000/posts](http://redux.docker.dev:8000/posts): posts endpoint
+You can view the node server logs by running
+```
+$ docker-compose logs app
+```
 
+#### Step 4: Serve your front-end bundle
+Next we're going to starup webpack-dev-server, which will serve your bundled front-end code and watch it for changes.
 
-####  Step 4: Working with Node/Redux
-1. Visit [redux.docker.dev:8080](http://redux.docker.dev:8080/) to see the site in action.
-2. Changes to the client-side code will automatically update in the browser thanks to React-Hot-Loader 3 (note: this is still in beta and a reload may occasionally be necessary)
-3. The Node server is being served using Nodemon. This means changes to the server-side code will cause the node server (port 8000) to restart.  Because Docker for mac is slow, this can take a little time. Be patient.
-4. By default Redux DevTools will be visible, allowing you to inspect the Redux state.  To hide the DevTools press `Ctrl + h`.  To move DevTools to another edge of the screen press `Ctrl + q`
+1. Open a new terminal window
+2. run `./bin/dev-client.sh`
+3. wait for webpack to output `webpack: bundle is now VALID`
+4. visit [redux.docker.dev:8080](http://redux.docker.dev:8080) to launch the application.
 
-### Bonus 1: Logging
-To view container logs use `docker-compose logs <container-name>`.  The container-name is the name specified in `docker-compose.yml`
+#### Step 5: React Storybook
+This project has React Storybook integrated, allowing you to design UI components rapidly -- and separately from the application itself.  [Read more about React Storybook here.](https://voice.kadira.io/introducing-react-storybook-ec27f28de1e2)
 
-### Bonus 2: Access a container's shell
+Add your React Storybook components to app/client/components/stories using [the appropriate syntax](https://github.com/kadirahq/react-storybook)
+
+To launch react-story book, open a new terminal window and run the following command from the root directory
+```
+$ ./bin/dev-storybook.sh
+```
+
+Once storybook has loaded and it confirms webpack has built, visit [redux.docker.dev:9001](redux.docker.dev:9001)
+
+####  Step 6: Working with Node/Redux
+1. Changes to the client-side code will automatically update in the browser thanks to React-Hot-Loader 3 (note: this is still in beta and a reload may occasionally be necessary)
+2. The Node server is being served using Nodemon. This means changes to the server-side code will cause the node server (port 8000) to restart. You can check the node-server logs to ensure it restarted after changes.
+3. By default Redux DevTools will be visible, allowing you to inspect the Redux state.  To hide the DevTools press `Ctrl + h`.  To move DevTools to another edge of the screen press `Ctrl + q`
+
+#### Bonus: Access a container's shell
 If the container is currently stopped, you can enter the container's bash shell by running:
 ```
 docker-compose run <container-name> bash
@@ -71,15 +92,3 @@ If the container is currently running, use the following command instead:
 ```
 docker-compose exec <container-name> bash
 ```
-
-#### React Storybook
-This project has React Storybook integrated, allowing you to design UI components rapidly -- and separately from the application itself.  [Read more about React Storybook here.](https://voice.kadira.io/introducing-react-storybook-ec27f28de1e2)
-
-Add your React Storybook components to app/client/components/stories using [the appropriate syntax](https://github.com/kadirahq/react-storybook)
-
-To launch react-story book, run the following command from the `/app` directory
-```
-$ npm run storybook
-```
-
-Once storybook has loaded and it confirms webpack has built, visit [redux.docker.dev:9001](redux.docker.dev:9001)
