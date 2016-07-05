@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react'
+import 'styles/post'
 
 const Post = ({ post, deletePost }) =>
-  <div>
-    <h4>{post.title}</h4>
-    <h5>{post.content}</h5>
-    <button onClick={deletePost}>Delete</button>
-  </div>
+  <article className='post'>
+    <div className='post__title'>{post.title}</div>
+    <div className='post__divider' />
+    <div className='post__content'>{post.content}</div>
+    <button className='post__deleteButton' onClick={deletePost}>Delete</button>
+  </article>
 
 Post.propTypes = {
   post: PropTypes.object.isRequired,

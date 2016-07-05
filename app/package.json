@@ -8,6 +8,7 @@
     "dev-server": "nodemon server/index.js --watch server",
     "dev-client": "webpack-dev-server --host=0.0.0.0",
     "dev-start": "npm run dev-server | npm run dev-client",
+    "storybook": "start-storybook -p 9001",
     "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -33,6 +34,7 @@
     "redux-form": "^6.0.0-rc.1"
   },
   "devDependencies": {
+    "@kadira/storybook": "^1.36.0",
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.10.4",
     "babel-eslint": "^6.1.0",

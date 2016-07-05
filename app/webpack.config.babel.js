@@ -1,7 +1,6 @@
 import webpack from 'webpack'
 import path from 'path'
 import merge from 'webpack-merge'
-import autoprefixer from 'autoprefixer'
 
 const DEV_SERVER_PORT = 8000
 
@@ -35,11 +34,6 @@ const common = {
   module: {
     preLoaders: [
       {
-        test: /\.scss$|\.sass$/,
-        loaders: ['postcss'],
-        include: PATHS.src,
-      },
-      {
         test: /\.jsx?$/,
         loaders: ['eslint'],
         include: [PATHS.src, PATHS.test],
@@ -58,9 +52,6 @@ const common = {
       },
     ],
   },
-  postcss: () => [
-    autoprefixer,
-  ],
 }
 
 const development = {

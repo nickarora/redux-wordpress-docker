@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react'
+import { Header } from 'components'
 
 const App = ({ children }) =>
   <div>
-    <h3>Redux Docker Wordpress.</h3>
+    <Header />
     {children}
   </div>
 

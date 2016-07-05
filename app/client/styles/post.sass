@@ -1,0 +1,35 @@
+.post
+  padding: 1em;
+  border: 1px solid #FFF;
+  border-radius: 10px;
+  max-width: 50%;
+  margin-bottom: 2em;
+
+  &__title
+    font-size: 1.5em;
+
+  &__divider
+    width: 100%;
+    height: 1px;
+    background: #FFF;
+    margin: 0.5em 0 1em 0;
+
+  &__content
+    margin: 0.5em 0;
+
+  &__deleteButton
+    background: tomato;
+    padding: 1em;
+    border-radius: 10px;
+    border: none;
+    color: #FFF;
+    float: right;
+
+    &:hover
+      background: white;
+      color: black;
+
+  &:after
+    content: "";
+    display: table;
+    clear: both;
