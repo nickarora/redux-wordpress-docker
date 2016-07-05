@@ -9,6 +9,9 @@ if ! $(wp core is-installed  --allow-root --path='/var/www/html'); then
    echo "=> Installing wordpress plugins"
    wp plugin install application-passwords --activate --allow-root
    wp plugin install rest-api --activate --allow-root
+
+   echo "=> Enabling Pretty Permalinks"
+   wp option update permalink_structure '/%postname%' --allow-root
 else
    echo "=> Wordpress is alread configured.";
 fi

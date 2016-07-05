@@ -33,15 +33,7 @@ You can the wordpress instance logs by running
 $ docker-compose logs wordpress
 ```
 
-#### Step 2: Enable pretty permalinks
-Login to wordpress using your admin username and password.
-
-1. Click on the `Settings` tab
-2. Select `Permalinks`
-3. Change Common Settings to `Post name`
-4. Click Save Changes
-
-#### Step 3: Create an application password
+#### Step 2: Create an application password
 If you haven't already, login to wordpress using your admin username and password.
 
 1. Click on `Users`
@@ -58,7 +50,7 @@ You can view the node server logs by running
 $ docker-compose logs app
 ```
 
-#### Step 4: Serve your front-end bundle
+#### Step 3: Serve your front-end bundle
 Next we're going to starup webpack-dev-server, which will serve your bundled front-end code and watch it for changes.
 
 1. Open a new terminal window
@@ -66,7 +58,7 @@ Next we're going to starup webpack-dev-server, which will serve your bundled fro
 3. wait for webpack to output `webpack: bundle is now VALID`
 4. visit [redux.docker.dev:8080](http://redux.docker.dev:8080) to launch the application.
 
-#### Step 5: React Storybook
+#### Step 4: React Storybook
 This project has React Storybook integrated, allowing you to design UI components rapidly -- and separately from the application itself.  [Read more about React Storybook here.](https://voice.kadira.io/introducing-react-storybook-ec27f28de1e2)
 
 Add your React Storybook components to app/client/components/stories using [the appropriate syntax](https://github.com/kadirahq/react-storybook)
@@ -78,7 +70,7 @@ $ ./bin/dev-storybook.sh
 
 Wait for the `webpack built ...` confirmation then visit [redux.docker.dev:9001](http://redux.docker.dev:9001)
 
-####  Step 6: Working with Node/Redux
+####  Step 5: Working with Node/Redux
 1. Changes to the client-side code will automatically update in the browser thanks to React-Hot-Loader 3 (note: this is still in beta and a reload may occasionally be necessary)
 2. The Node server is being served using Nodemon. This means changes to the server-side code will cause the node server (port 8000) to restart. You can check the node-server logs to ensure it restarted after changes.
 3. By default Redux DevTools will be visible, allowing you to inspect the Redux state.  To hide the DevTools press `Ctrl + h`.  To move DevTools to another edge of the screen press `Ctrl + q`
