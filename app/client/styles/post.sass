@@ -1,9 +1,14 @@
+@import 'vars'
+
 .post
   padding: 1em;
   border: 1px solid #FFF;
   border-radius: 10px;
-  max-width: 50%;
   margin-bottom: 2em;
+  max-width: 100%;
+
+  @media screen and (min-width: $break-medium)
+    max-width: 75%;
 
   &__title
     font-size: 1.5em;
@@ -18,16 +23,16 @@
     margin: 0.5em 0;
 
   &__deleteButton
-    background: tomato;
+    background: $tomato;
     padding: 1em;
     border-radius: 10px;
     border: none;
-    color: #FFF;
+    color: $white;
     float: right;
 
     &:hover
-      background: white;
-      color: black;
+      background: $white;
+      color: $black;
 
   &:after
     content: "";
