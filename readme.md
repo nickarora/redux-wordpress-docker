@@ -76,7 +76,7 @@ To launch react-story book, open a new terminal window and run the following com
 $ ./bin/dev-storybook.sh
 ```
 
-Once storybook has loaded and it confirms webpack has built, visit [redux.docker.dev:9001](redux.docker.dev:9001)
+Wait for the `webpack built ...` confirmation then visit [redux.docker.dev:9001](http://redux.docker.dev:9001)
 
 ####  Step 6: Working with Node/Redux
 1. Changes to the client-side code will automatically update in the browser thanks to React-Hot-Loader 3 (note: this is still in beta and a reload may occasionally be necessary)
